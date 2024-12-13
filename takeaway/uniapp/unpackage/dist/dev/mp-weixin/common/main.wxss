@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+
+page {
+	/* 定义根节点的最小高度为整个窗口的高度 */
+	min-height: 100vh;  
+	background-color: #f8f8f8;
+	font-size: 28rpx;
+	/* 在iphone6尺寸的屏幕里：2rpx = 1px     保证在所有手机屏幕效果显示是一样的 */
+}
+
+.box {
+	background-color: #fff;
+	padding: 20rpx;
+	border-radius: 10rpx;
+	box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, .1);
+}
