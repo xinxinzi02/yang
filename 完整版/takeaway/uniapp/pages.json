@@ -1,0 +1,195 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	
+	//注意! 当你添加文件和项目时，这里会自动给你添加和配置项目路由。
+		{
+	
+			"path": "pages/index/index",
+			"style": {
+
+			}
+		},
+		{
+			"path" : "pages/orders/orders",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/me/me",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的",
+				"enablePullDownRefresh" : false  //不允许开启下拉框
+			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "登陆页面",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/register/register",
+			"style" : 
+			{
+				"navigationBarTitleText" : "注册页面",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/detail/detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "商 家",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/confirm/confirm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "确认订单",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/orderComment/orderComment",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单备注",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/address/address",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收货地址",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/addAddress/addAddress",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收货地址",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/ordersItem/ordersItem",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单详情页",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/comment/comment",
+			"style" : 
+			{
+				"navigationBarTitleText" : "评 价",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/collect/collect",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收藏中心",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/commentCenter/commentCenter",
+			"style" : 
+			{
+				"navigationBarTitleText" : "评价中心",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/aboutUs/aboutUs",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/person/person",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/agreement/agreement",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/search/search",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/categoryBusiness/categoryBusiness",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		}
+
+	],
+	"globalStyle": {
+  // 导航栏标题颜色及状态栏前景颜色，仅支持 black/white
+  "navigationBarTextStyle": "black",
+  // 导航栏标题文字内容
+  "navigationBarTitleText": "瑶瑶外卖",
+  // 导航栏背景颜色（同状态栏背景色）
+  "navigationBarBackgroundColor": "#ffd100",
+  //  下拉显示出来的窗口的背景色
+  "backgroundColor": "#F8F8F8"
+	},
+	//设置小程序顶部图标样式
+	"tabBar": {
+	    "selectedColor": "#ffd100",//选中时字体颜色
+	    "color": "#666",//默认字体颜色
+	   "list": [
+	         {
+	           "pagePath": "pages/index/index",   // 菜单路径
+	           "text": "首页",
+	           "iconPath": "static/icons/home.png",   // 默认图标
+	           "selectedIconPath": "static/icons/home-active.png"  // 高亮图标
+	         },
+	         {
+	           "pagePath": "pages/orders/orders",
+	           "text": "订单",
+	           "iconPath": "static/icons/orders.png",
+	           "selectedIconPath": "static/icons/orders-active.png"
+	         },
+	         {
+	           "pagePath": "pages/me/me",
+	           "text": "我的",
+	           "iconPath": "static/icons/me.png",
+	           "selectedIconPath": "static/icons/me-active.png"
+	         }
+	       ]
+	}
+	
+	
+}
