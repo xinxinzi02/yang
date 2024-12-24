@@ -98,46 +98,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
-try {
-  components = {
-    uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 170))
-    },
-    uniRate: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-rate/components/uni-rate/uni-rate */ "uni_modules/uni-rate/components/uni-rate/uni-rate").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-rate/components/uni-rate/uni-rate.vue */ 222))
-    },
-    uniGoodsNav: function () {
-      return Promise.all(/*! import() | uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav.vue */ 229))
-    },
-    uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 240))
-    },
-    uniNumberBox: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-number-box/components/uni-number-box/uni-number-box */ "uni_modules/uni-number-box/components/uni-number-box/uni-number-box").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-number-box/components/uni-number-box/uni-number-box.vue */ 247))
-    },
-  }
-} catch (e) {
-  if (
-    e.message.indexOf("Cannot find module") !== -1 &&
-    e.message.indexOf(".vue") !== -1
-  ) {
-    console.error(e.message)
-    console.error("1. 排查组件名称拼写是否正确")
-    console.error(
-      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
-    )
-    console.error(
-      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
-    )
-  } else {
-    throw e
-  }
-}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = _vm.cartList.length
   if (!_vm._isMounted) {
     _vm.e0 = function ($event) {
       _vm.current = "全部商品"
@@ -146,14 +110,6 @@ var render = function () {
       _vm.current = "评价"
     }
   }
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        g0: g0,
-      },
-    }
-  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -383,11 +339,11 @@ var _default = {
         text: '购物车',
         info: 0
       }],
-      buttonGroup: [{
-        text: '立即下单',
-        backgroundColor: 'linear-gradient(90deg, #FE6035, #EF1224)',
-        color: '#fff'
-      }],
+      // buttonGroup: [{
+      //   text: '立即下单',
+      //   backgroundColor: 'linear-gradient(90deg, #FE6035, #EF1224)',
+      //   color: '#fff'
+      // }],
       user: uni.getStorageSync('xm-user'),
       //从登录后的浏览器中的仓库中取出用户的信息。
       cartList: [],
@@ -402,108 +358,96 @@ var _default = {
     var option = allPages[lastPages].options; // 获得上个页面传递的参数；
     this.businessId = option.businessId;
     this.load();
-    this.loadCart(); //页面加载的时候将购物车的数据加载出来
+    // this.loadCart() //页面加载的时候将购物车的数据加载出来
   },
 
   methods: {
-    saveCollect: function saveCollect() {
-      var _this = this;
-      //添加收藏
-      this.$request.post('/collect/saveCollect', {
-        userId: this.user.id,
-        businessId: this.businessId
-      }).then(function (res) {
-        if (res.code === '200') {
-          uni.showToast({
-            icon: 'success',
-            title: '操作成功'
-          });
-          _this.load();
-        } else {
-          uni.showToast({
-            icon: 'error',
-            title: res.msg
-          });
-        }
-      });
-    },
-    buttonClick: function buttonClick() {
-      //立即下单
-      if (this.cartList.length === 0) {
-        //购物无商品的时候不允许下单   
-        uni.showToast({
-          icon: 'none',
-          title: '请选择商品'
-        });
-        return;
-      }
-      var xmOrders = uni.getStorageSync('xm-orders') || {}; //先获取出数据来
-      xmOrders.businessId = this.businessId;
-      uni.setStorageSync('xm-orders', xmOrders);
-      uni.navigateTo({
-        //传递参数 businessId  点击立即下单的时候，将该商家的id传到订单页面
-        url: '/pages/confirm/confirm'
-      });
-    },
-    deleteAll: function deleteAll() {
-      var _this2 = this;
-      //情况购物车
-      this.$request.del('/cart/deleteByBusiness/' + this.businessId + '/' + this.user.id).then(function (res) {
-        if (res.code === '200') {
-          uni.showToast({
-            icon: 'success',
-            title: '操作成功'
-          });
-          _this2.loadCart();
-        } else {
-          uni.showToast({
-            icon: 'error',
-            title: res.msg
-          });
-        }
-      });
-    },
-    updateCart: function updateCart(cart) {
-      var _this3 = this;
-      //更新后台的cart的数据  比如点击+，购物车数量加一，需要将数据更新到后台
-      this.$request.put('/cart/update', cart).then(function (res) {
-        if (res.code === '200') {
-          _this3.loadCart(); //更新一下购物车图标的数字和cartList
-        } else {
-          uni.showToast({
-            icon: 'error',
-            title: res.msg
-          });
-        }
-      });
-    },
-    onClick: function onClick() {
-      // 点击购物车图标触发
-      this.$refs.popup.open('bottom');
-    },
-    loadCart: function loadCart() {
-      var _this4 = this;
-      //刷新购物车
-      this.$request.get('/cart/selectAll', {
-        userId: this.user.id,
-        //查询，这个用户在这个商家所有购物车的列表
-        businessId: this.businessId //筛选商家的购物车商品，保证在不同商家时，购物车的内容不一样
-      }).then(function (res) {
-        _this4.cartList = res.data || [];
-        _this4.options[0].info = _this4.cartList.length; //购物车小图标的上的数字 = 购物车列表的长度
-        console.log(_this4.cartList, "获取到的购物车列表");
-      });
-      this.$request.get('/cart/calc', {
-        userId: this.user.id,
-        businessId: this.businessId
-      }).then(function (res) {
-        //获取商品金额信息
-        _this4.amount = res.data || {};
-        console.log(_this4.amount, "获取商品德所有金额信息");
-      });
-    },
+    // saveCollect() { //添加收藏
+    //   this.$request.post('/collect/saveCollect', {
+    //     userId: this.user.id,
+    //     businessId: this.businessId
+    //   }).then(res => {
+    //     if (res.code === '200') {
+    //       uni.showToast({
+    //         icon: 'success',
+    //         title: '操作成功'
+    //       })
+    //       this.load()
+    //     } else {
+    //       uni.showToast({
+    //         icon: 'error',
+    //         title: res.msg
+    //       })
+    //     }
+    //   })
+    // },
+    // buttonClick() { //立即下单
+    //   if (this.cartList.length === 0) { //购物无商品的时候不允许下单
+    //     uni.showToast({
+    //       icon: 'none',
+    //       title: '请选择商品'
+    //     })
+    //     return
+    //   }
+    //   let xmOrders = uni.getStorageSync('xm-orders') || {} //先获取出数据来
+    //   xmOrders.businessId = this.businessId
+    //   uni.setStorageSync('xm-orders', xmOrders)
+    //   uni.navigateTo({ //传递参数 businessId  点击立即下单的时候，将该商家的id传到订单页面
+    //     url: '/pages/confirm/confirm'
+    //   })
+    // },
+    // deleteAll() { //情况购物车
+    //   this.$request.del('/cart/deleteByBusiness/' + this.businessId + '/' + this.user.id).then(res => {
+    //     if (res.code === '200') {
+    //       uni.showToast({
+    //         icon: 'success',
+    //         title: '操作成功'
+    //       })
+    //       this.loadCart()
+    //     } else {
+    //       uni.showToast({
+    //         icon: 'error',
+    //         title: res.msg
+    //       })
+    //     }
+    //   })
+    // },
+    // updateCart(cart) { //更新后台的cart的数据  比如点击+，购物车数量加一，需要将数据更新到后台
+    //   this.$request.put('/cart/update', cart).then(res => {
+    //     if (res.code === '200') {
+    //       this.loadCart() //更新一下购物车图标的数字和cartList
+    //
+    //     } else {
+    //       uni.showToast({
+    //         icon: 'error',
+    //         title: res.msg
+    //       })
+    //     }
+    //   })
+    // },
+    // onClick() {
+    //   // 点击购物车图标触发
+    //   this.$refs.popup.open('bottom')
+    //
+    //
+    // },
+    // loadCart() { //刷新购物车
+    //   this.$request.get('/cart/selectAll', {
+    //     userId: this.user.id, //查询，这个用户在这个商家所有购物车的列表
+    //     businessId: this.businessId //筛选商家的购物车商品，保证在不同商家时，购物车的内容不一样
+    //   }).then(res => {
+    //     this.cartList = res.data || []
+    //     this.options[0].info = this.cartList.length //购物车小图标的上的数字 = 购物车列表的长度
+    //   })
+    //
+    //   this.$request.get('/cart/calc', {
+    //     userId: this.user.id,
+    //     businessId: this.businessId
+    //   }).then(res => { //获取商品金额信息
+    //     this.amount = res.data || {}
+    //   })
+    // },
     addCart: function addCart(goods) {
-      var _this5 = this;
       //点击加购的时候
       this.$request.post('/cart/add', {
         goodsId: goods.id,
@@ -515,11 +459,10 @@ var _default = {
         userId: this.user.id //用户id
       }).then(function (res) {
         if (res.code === '200') {
-          uni.showToast({
-            icon: 'success',
-            title: '加入成功'
+          uni.navigateTo({
+            //传递参数 businessId  点击立即下单的时候，将该商家的id传到订单页面
+            url: '/pages/confirm/confirm'
           });
-          _this5.loadCart(); //重新加载购物车列表
         } else {
           uni.showToast({
             icon: 'error',
@@ -529,39 +472,35 @@ var _default = {
       });
     },
     load: function load() {
-      var _this6 = this;
+      var _this = this;
       this.$request.get('/business/selectById/' + this.businessId).then(function (res) {
-        _this6.business = res.data || {};
-        console.log(_this6.business);
+        _this.business = res.data || {};
+        console.log(res, 'bbbbbb===========');
       });
       this.$request.get('/category/selectAll', {
         businessId: this.businessId //将商家id传给后台
       }).then(function (res) {
-        _this6.categoryList = res.data || []; //从后台拿到该商家的商品分类信息
-        _this6.activeCategoryId = _this6.categoryList.length > 0 ? _this6.categoryList[0].id : 0; //默认显示商品分类
+        _this.categoryList = res.data || []; //从后台拿到该商家的商品分类信息
+        _this.activeCategoryId = _this.categoryList.length > 0 ? _this.categoryList[0].id : 0; //默认显示商品分类
         //如果categoryList.length > 0，即是后台传过来的分类列表有数据的时候，将列表中下标为0的，也就是第一个商品分类信息默认展示出来
-        _this6.loadGoods(_this6.activeCategoryId);
+        _this.loadGoods(_this.activeCategoryId);
       });
       this.$request.get('/comment/selectAll', {
         userId: this.user.id,
         businessId: this.businessId
       }).then(function (res) {
         //查询出用户自己的评论信息
-        _this6.commentList = res.data || [];
-        console.log(_this6.commentList, "获取评价列表");
+        _this.commentList = res.data || [];
       });
     },
     loadGoods: function loadGoods(categoryId) {
-      var _this7 = this;
+      var _this2 = this;
       //当点击商品分类的信息的时候，则会更新当前商品分类下边的所有商品信息
-      console.log("我被点击1", categoryId);
       this.activeCategoryId = categoryId; //将点击的商品分类categoryId传给你activeCategoryId
-      console.log("我被点击2", this.activeCategoryId);
       this.$request.get('/goods/selectAll', {
         categoryId: categoryId //根据当前的商品分类id请求数据
       }).then(function (res) {
-        console.log(res, "我是商品信息列表");
-        _this7.goodsList = res.data || [];
+        _this2.goodsList = res.data || [];
       });
     }
   }

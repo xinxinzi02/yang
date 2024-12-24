@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "Business-el-table-column-default": "/../vue/src/views/manager/Business-el-table-column-default",
+    "Business-el-table-column-default1": "/../vue/src/views/manager/Business-el-table-column-default1",
+    "Business-el-table-column-default2": "/../vue/src/views/manager/Business-el-table-column-default2",
+    "Business-el-table-column-default3": "/../vue/src/views/manager/Business-el-table-column-default3"
+  },
+  "component": true
+}

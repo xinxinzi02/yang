@@ -17,7 +17,6 @@
         <el-table-column prop="id" label="序号" width="70" align="center" sortable></el-table-column>
         <el-table-column prop="name" label="名称"></el-table-column>
         <el-table-column prop="price" label="价格"></el-table-column>
-        <el-table-column prop="discount" label="折扣"></el-table-column>
         <el-table-column prop="img" label="图片">
           <template v-slot="scope">
             <div style="display: flex; align-items: center">
@@ -27,21 +26,19 @@
           </template>
         </el-table-column>
         <el-table-column prop="descr" label="描述"></el-table-column>
-        <el-table-column prop="origin" label="原材料"></el-table-column>
-        <el-table-column prop="taste" label="口味"></el-table-column>
         <el-table-column prop="specs" label="规格"></el-table-column>
         <el-table-column prop="date" label="上架日期"></el-table-column>
-        <el-table-column prop="status" label="上架状态">
+        <el-table-column prop="status" label="租赁状态">
           <template v-slot="scope">
-            <el-tag type="success" v-if="scope.row.status === '上架'">上架</el-tag>
-            <el-tag type="warning" v-if="scope.row.status === '下架'">下架</el-tag>
+            <el-tag type="success" v-if="scope.row.status === '上架'">待租</el-tag>
+            <el-tag type="warning" v-if="scope.row.status === '下架'">已租</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="businessName" label="商家"></el-table-column>
         <el-table-column prop="categoryName" label="分类"></el-table-column>
         <el-table-column label="操作" align="center" width="180">
           <template v-slot="scope">
-            <el-button size="mini" type="primary" plain @click="handleEdit(scope.row)">编辑</el-button>
+            <el-button size="mini" type="info" plain @click="handleEdit(scope.row)">编辑</el-button>
             <el-button size="mini" type="danger" plain @click="del(scope.row.id)">删除</el-button>
           </template>
         </el-table-column>

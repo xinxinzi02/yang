@@ -6,29 +6,29 @@
     "pages/login/login",
     "pages/register/register",
     "pages/detail/detail",
+    "pages/person/person",
+    "pages/aboutUs/aboutUs",
+    "pages/agreement/agreement",
     "pages/confirm/confirm",
-    "pages/orderComment/orderComment",
     "pages/address/address",
     "pages/addAddress/addAddress",
+    "pages/orderComment/orderComment",
     "pages/ordersItem/ordersItem",
-    "pages/comment/comment",
+    "pages/categoryBusiness/categoryBusiness",
     "pages/collect/collect",
-    "pages/commentCenter/commentCenter",
-    "pages/aboutUs/aboutUs",
-    "pages/person/person",
-    "pages/agreement/agreement",
     "pages/search/search",
-    "pages/categoryBusiness/categoryBusiness"
+    "pages/comment/comment",
+    "pages/commentCenter/commentCenter"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "瑶瑶外卖",
-    "navigationBarBackgroundColor": "#ffd100",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "鑫鑫租车",
+    "navigationBarBackgroundColor": "#00aaff",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "selectedColor": "#ffd100",
+    "selectedColor": "#9080a4",
     "color": "#666",
     "list": [
       {
@@ -45,7 +45,7 @@
       },
       {
         "pagePath": "pages/me/me",
-        "text": "我的",
+        "text": "个人中心",
         "iconPath": "static/icons/me.png",
         "selectedIconPath": "static/icons/me-active.png"
       }

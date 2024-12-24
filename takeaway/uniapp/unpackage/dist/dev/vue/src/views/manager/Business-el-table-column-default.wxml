@@ -1,0 +1,1 @@
+<view style="display:flex;align-items:center;" class="_div data-v-367331c5"><block wx:if="{{scope.row.avatar}}"><el-image style="width:40px;height:40px;border-radius:50%;" vue-id="75ed2a3e-13" src="{{scope.row.avatar}}" preview-src-list="{{[scope.row.avatar]}}" class="data-v-367331c5" bind:__l="__l"></el-image></block></view>

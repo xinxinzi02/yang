@@ -32,7 +32,6 @@
         <el-table-column prop="phone" label="下单人电话"></el-table-column>
         <el-table-column prop="userName" label="下单人"></el-table-column>
         <el-table-column prop="amount" label="订单总价"></el-table-column>
-        <el-table-column prop="discount" label="优惠金额"></el-table-column>
         <el-table-column prop="actual" label="实付款"></el-table-column>
         <el-table-column prop="comment" label="备注"></el-table-column>
         <el-table-column prop="time" label="下单时间"></el-table-column>
@@ -40,13 +39,13 @@
         <el-table-column prop="payType" label="支付类型"></el-table-column>
         <el-table-column label="详情" align="center" width="90" fixed="right">
           <template v-slot="scope">
-            <el-button size="mini" type="primary" plain @click="loadDetail(scope.row.id)">查看详情</el-button>
+            <el-button size="mini"  plain @click="loadDetail(scope.row.id)" style="background-color:rgba(248,166,43,0.45);;">查看详情</el-button>
           </template>
         </el-table-column>
         <el-table-column label="操作" align="center" width="240" fixed="right">
           <template v-slot="scope">
             <el-button size="mini" type="info" @click="sendGoods(scope.row)" v-if="scope.row.status === '待发货'">发货</el-button>
-            <el-button size="mini" type="primary" plain @click="handleEdit(scope.row)" v-if="user.role === 'ADMIN'">编辑</el-button>
+            <el-button size="mini" type="info" plain @click="handleEdit(scope.row)" v-if="user.role === 'ADMIN'">编辑</el-button>
             <el-button size="mini" type="danger" plain @click="del(scope.row.id)" v-if="user.role === 'ADMIN'">删除</el-button>
           </template>
         </el-table-column>
@@ -109,9 +108,6 @@
         <el-form-item label="订单总价" prop="amount">
           <el-input v-model="form.amount" placeholder="订单总价"></el-input>
         </el-form-item>
-        <el-form-item label="优惠金额" prop="discount">
-          <el-input v-model="form.discount" placeholder="优惠金额"></el-input>
-        </el-form-item>
         <el-form-item label="实付款" prop="actual">
           <el-input v-model="form.actual" placeholder="实付款"></el-input>
         </el-form-item>
@@ -122,7 +118,7 @@
 
       <div slot="footer" class="dialog-footer">
         <el-button @click="fromVisible = false">取 消</el-button>
-        <el-button type="primary" @click="save">确 定</el-button>
+        <el-button @click="save" style="background-color:rgba(4,3,3,0.3);">确 定</el-button>
       </div>
     </el-dialog>
 

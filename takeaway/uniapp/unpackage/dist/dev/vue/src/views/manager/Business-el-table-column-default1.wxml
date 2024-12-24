@@ -1,0 +1,1 @@
+<view style="display:flex;align-items:center;" class="_div data-v-367331c5"><block wx:if="{{scope.row.license}}"><el-image style="width:40px;height:40px;" vue-id="75ed2a3e-19" src="{{scope.row.license}}" preview-src-list="{{[scope.row.license]}}" class="data-v-367331c5" bind:__l="__l"></el-image></block></view>
