@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown List</title>
+</head>
+<body>
+
+<h2>Choose a Fruit:</h2>
+
+<select id="fruits">
+<option value="apple">Apple</option>
+<option value="banana">Banana</option>
+<option value="orange">Orange</option>
+<option value="grape">Grape</option>
+<option value="strawberry">Strawberry</option>
+</select>
+
+</body>
+</html>

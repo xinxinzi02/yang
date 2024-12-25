@@ -1,0 +1,17 @@
+* {
+	box-sizing: border-box;
+}
+page {
+	/* 定义根结点的最小高度为整个窗口的高度 */
+	min-height: 100vh;
+	background-color: #fdfdfd;
+	font-size: 28rpx;//1px = 2rpx(iphone6)
+	color: #282828;
+	
+}
+.box {
+	background-color: #fff;
+	padding: 20rpx;
+	border-radius: 10rpx;
+	box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, .1);
+}
